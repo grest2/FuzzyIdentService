@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuzzyIdentService", "FuzzyIdentService\FuzzyIdentService.csproj", "{DA938EAA-C448-4EDF-B647-30745E3808BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA938EAA-C448-4EDF-B647-30745E3808BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA938EAA-C448-4EDF-B647-30745E3808BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA938EAA-C448-4EDF-B647-30745E3808BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA938EAA-C448-4EDF-B647-30745E3808BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D7BDBF3-2823-43BF-B04D-3018473441AD}
+	EndGlobalSection
+EndGlobal
