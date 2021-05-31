@@ -12,8 +12,6 @@ D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcor
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.csprojAssemblyReference.cache
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.AssemblyInfoInputs.cache
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.AssemblyInfo.cs
-D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.csproj.CoreCompileInputs.cache
-D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.MvcApplicationPartsAssemblyInfo.cache
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.RazorAssemblyInfo.cache
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.RazorAssemblyInfo.cs
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.TagHelpers.input.cache
