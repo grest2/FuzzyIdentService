@@ -7,9 +7,10 @@ namespace FuzzyIdentService.Models.Entities
 {
     public class User
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public string FirstName { get; set; }
-        public int MiddleName { get; set; }
+        public string MiddleName { get; set; }
         public string LastName { get; set; }
+        public string Index { get; set; }
     }
 }

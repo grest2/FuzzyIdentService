@@ -1,0 +1,23 @@
+﻿@model FuzzyIdentService.Models.Entities.User
+@{ 
+    ViewBag.Title = "Добавление клиента";
+}
+
+<form asp-action="create" asp-controller="home">
+    <div class="form-group">
+        <label asp-for="FirstName" class=" form-control"><Имя></label>
+        <input type="text" asp-for="FirstName" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class=" form-control"><Отчество></label>
+        <input type="text" asp-for="LastName" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="MiddleName" class=" form-control"><Фамилия></label>
+        <input type="text" asp-for="MiddleName" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Index" class=" form-control"><Индекс></label>
+        <input type="text" asp-for="Index" class="form-control">
+    </div>
+</form>

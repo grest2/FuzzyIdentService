@@ -6,32 +6,37 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FuzzyIdentService.Models;
+using FuzzyIdentService.Models.Context;
+using FuzzyIdentService.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace FuzzyIdentService.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private UserContext db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(UserContext context)
         {
-            _logger = logger;
+            db = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Create()
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await db.UserData.ToListAsync());
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public async Task<IActionResult> Create(User user)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            
+            db.UserData.Add(user);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }

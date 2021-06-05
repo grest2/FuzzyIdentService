@@ -1,8 +1,16 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<FuzzyIdentService.Models.Entities.User>
+@{ 
+    ViewBag.Title = "Пользователи";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<a asp-action="Create">Добавить пользователя</a>
+<table class="table">
+    <tr><td>Имя</td></tr>
+    <tr><td>Индекс</td></tr>
+
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.FirstName</td></tr>
+        <tr><td>@item.Index.</td></tr>
+    }
+</table>

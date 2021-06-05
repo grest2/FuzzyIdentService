@@ -7,9 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FuzzyIdentService.Models.Context
 {
-     class UserContext : DbContext
-    {
-        public UserContext(DbContextOptions<UserContext> options) : base(options) { }
-        public virtual DbSet<User> User { get; set; }
-    }
+   public class UserContext : DbContext
+   {
+        public UserContext(DbContextOptions<UserContext> options) : base(options) { Database.EnsureCreated(); }
+        public virtual DbSet<User> UserData { get; set; }
+
+   }
 }

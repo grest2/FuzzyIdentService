@@ -12,7 +12,7 @@ namespace FuzzyIdentService.Fuzzy_Services
         public string BestMatch(string word)
         {
             string fuzzyWord = rusMetaphone.getRightName(word);
-
+            return "";
         }
     }
 }
