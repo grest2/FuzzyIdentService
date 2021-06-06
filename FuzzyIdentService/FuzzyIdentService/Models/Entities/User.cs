@@ -12,5 +12,6 @@ namespace FuzzyIdentService.Models.Entities
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string Index { get; set; }
+        public FoneticUser fonUser { get; set; }
     }
 }

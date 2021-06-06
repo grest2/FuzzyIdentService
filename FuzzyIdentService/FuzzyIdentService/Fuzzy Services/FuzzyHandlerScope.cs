@@ -8,11 +8,14 @@ namespace FuzzyIdentService.Fuzzy_Services
 {
     public class FuzzyHandlerScope : IFuzzyHandler
     {
-        RussianMetaphone rusMetaphone = new RussianMetaphone();
-        public string BestMatch(string word)
+        RussianMetaphone rusMetaphone = RussianMetaphone.getInstance();
+        DamerauLevensteinMetric dlMetric = new DamerauLevensteinMetric();
+
+        public int BestMatch(string FirstWord, string SecondWord)
         {
-            string fuzzyWord = rusMetaphone.getRightName(word);
-            return "";
+            string FoneticName = rusMetaphone.getRightName(FirstWord);
+            return dlMetric.DamerauLevensteinMetrics(FoneticName,SecondWord);
+
         }
     }
 }

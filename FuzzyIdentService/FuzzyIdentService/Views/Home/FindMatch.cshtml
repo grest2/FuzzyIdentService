@@ -1,0 +1,9 @@
+﻿@model IEnumerable<FuzzyIdentService.Models.Entities.UserFoneticUser>
+<table class="table">
+    <tr><td>Имя</td></tr>
+
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.fUser.FoneticLastName</td></tr>
+    }
+</table>

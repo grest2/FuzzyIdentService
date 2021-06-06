@@ -24,7 +24,7 @@ namespace FuzzyIdentService.Fuzzy_Services
     public class RussianMetaphone
     {
         private const string Path = "";
-
+        private static RussianMetaphone instance;
         string alphavite = string.Join("", File.ReadAllLines("alphavite.txt"));
         string sonorous = string.Join("", File.ReadAllLines("sonorous.txt"));
         string blinds = string.Join("", File.ReadAllLines("blinds.txt"));
@@ -41,6 +41,13 @@ namespace FuzzyIdentService.Fuzzy_Services
             {
                 suffixDictionary.Add(dictKeys[index], dictValues[index]);
             }
+        }
+        public static RussianMetaphone getInstance()
+        {
+            if (instance == null) {
+                instance = new RussianMetaphone();
+            }
+            return instance;
         }
         public string getRightName(string name)
         {

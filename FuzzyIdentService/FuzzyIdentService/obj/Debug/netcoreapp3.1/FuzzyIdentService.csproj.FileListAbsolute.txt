@@ -75,3 +75,5 @@ D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcor
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\Razor\Views\Home\Create.cshtml.g.cs
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.csprojAssemblyReference.cache
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\Razor\Views\Home\FindMatch.cshtml.g.cs

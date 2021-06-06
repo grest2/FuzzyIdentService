@@ -7,6 +7,6 @@ namespace FuzzyIdentService.Abstractions
 {
     interface IFuzzyHandler
     {
-        public string BestMatch(string word);
+        public int BestMatch(string FirstWord,string SecondWord);
     }
 }
