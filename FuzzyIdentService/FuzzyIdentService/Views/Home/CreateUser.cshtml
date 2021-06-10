@@ -1,0 +1,15 @@
+﻿@model FuzzyIdentService.Models.Entities.User
+@{
+    ViewBag.Title = "Добавить пользователя";
+}
+
+<form asp-controller="Home" asp-action="CreateUser" method="post">
+    <p>
+        Введите идентификатор <input type="text" name="ID">
+        Введите индекс: <input type="text" name="Index">
+        Введите фамилию: <input type="text" name="MiddleName">
+        Введите имя: <input type="text" name="FirstName">
+        Введите отчество: <input type="text" name="LastName">
+        <input type="submit" value="Добавить">
+    </p>
+</form>

@@ -1,0 +1,12 @@
+﻿@model FuzzyIdentService.Models.Entities.User
+@{ 
+    ViewBag.Title = "Найти пользователя";
+}
+
+<form asp-controller ="Home" asp-action="FindMatch" method="post">
+    <p>
+        Введите индекс: <input type="text" name="Index">
+        Введите фамилию: <input type="text" name="LastName">
+        <input type="submit" value="Найти">
+    </p>
+</form>

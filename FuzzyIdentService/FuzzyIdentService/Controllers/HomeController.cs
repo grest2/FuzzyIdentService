@@ -1,37 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using FuzzyIdentService.Models;
+using FuzzyIdentService.Models.Context;
+using FuzzyIdentService.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using FuzzyIdentService.Fuzzy_Services;
+using System.Diagnostics;
 
 namespace FuzzyIdentService.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private UserContext db;
+        private FuzzyHandlerScope fHandler = new FuzzyHandlerScope();
+        private Dictionary<string, int> pick = new Dictionary<string, int>();
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(UserContext context)
         {
-            _logger = logger;
+            db = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public IActionResult Find()
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public async Task<IActionResult> Index()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(await db.UserData.ToListAsync());
         }
+        public IActionResult CreateUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(string ID,string FirstName,string MiddleName,string LastName,string Index)
+        {
+            User user = new User(ID, FirstName, MiddleName, LastName, Index);
+            FoneticUser foneticUser = new FoneticUser(ID,
+                RussianMetaphone.getInstance().getRightName(user.FirstName),
+                RussianMetaphone.getInstance().getRightName(user.MiddleName),
+                RussianMetaphone.getInstance().getRightName(user.LastName),
+                ID);
+            db.UserData.Add(user);
+            db.FoneticUser.Add(foneticUser);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> FindMatch(string index,string LastName)
+        {
+            IQueryable<User> users = db.UserData.Where(user=>user.Index == index);
+            var fUsers = users.Join(db.FoneticUser,
+                user => user.id,
+                fUser => fUser.UserId,
+                (user, fUser) => new UserFoneticUser
+                {
+                    user = user,
+                    fUser = fUser
+                });
+            var query = fUsers.OrderBy(fUser => fUser.fUser.FoneticMiddleName).Select(fUser=>fUser.fUser.FoneticMiddleName).Distinct();
+            await query.ForEachAsync(fUser =>pick.Add(fUser, fHandler.BestMatch(LastName, fUser)));
+            string[] matchesMiddleNames = pick.Where(element => element.Value < 3).ToDictionary(element => element.Key,element => element.Value).Keys.ToArray();
+            fUsers = fUsers.Where(fUser => matchesMiddleNames.Contains(fUser.fUser.FoneticMiddleName));
+            
+            return View(await fUsers.ToListAsync());
+        }
+
+        
     }
 }

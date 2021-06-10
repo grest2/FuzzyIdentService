@@ -1,0 +1,6 @@
+ALTER TABLE UserData
+ALTER COLUMN [Index] NVARCHAR(10)  NOT NULL
+GO
+
+--INSERT INTO UserData([Index])
+--VALUES ('6015')--,('6015'),('7099'),('6015')
