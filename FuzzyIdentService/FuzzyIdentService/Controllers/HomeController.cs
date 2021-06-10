@@ -16,6 +16,7 @@ namespace FuzzyIdentService.Controllers
         private UserContext db;
         private FuzzyHandlerScope fHandler = new FuzzyHandlerScope();
         private Dictionary<string, int> pick = new Dictionary<string, int>();
+        private int distance = 3;
 
         public HomeController(UserContext context)
         {
@@ -62,7 +63,7 @@ namespace FuzzyIdentService.Controllers
                 });
             var query = fUsers.OrderBy(fUser => fUser.fUser.FoneticMiddleName).Select(fUser=>fUser.fUser.FoneticMiddleName).Distinct();
             await query.ForEachAsync(fUser =>pick.Add(fUser, fHandler.BestMatch(LastName, fUser)));
-            string[] matchesMiddleNames = pick.Where(element => element.Value < 3).ToDictionary(element => element.Key,element => element.Value).Keys.ToArray();
+            string[] matchesMiddleNames = pick.Where(element => element.Value < distance).ToDictionary(element => element.Key,element => element.Value).Keys.ToArray();
             fUsers = fUsers.Where(fUser => matchesMiddleNames.Contains(fUser.fUser.FoneticMiddleName));
             
             return View(await fUsers.ToListAsync());
