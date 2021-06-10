@@ -22,7 +22,7 @@ namespace FuzzyIdentService.Controllers
             db = context;
         }
 
-        public IActionResult Create()
+        public IActionResult Find()
         {
             return View();
         }
@@ -30,17 +30,25 @@ namespace FuzzyIdentService.Controllers
         {
             return View(await db.UserData.ToListAsync());
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(User user)
+        public IActionResult CreateUser()
         {
-            
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(string ID,string FirstName,string MiddleName,string LastName,string Index)
+        {
+            User user = new User(ID, FirstName, MiddleName, LastName, Index);
+            FoneticUser foneticUser = new FoneticUser(ID,
+                RussianMetaphone.getInstance().getRightName(user.FirstName),
+                RussianMetaphone.getInstance().getRightName(user.MiddleName),
+                RussianMetaphone.getInstance().getRightName(user.LastName),
+                ID);
             db.UserData.Add(user);
+            db.FoneticUser.Add(foneticUser);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
         public async Task<IActionResult> FindMatch(string index,string LastName)
         {
             IQueryable<User> users = db.UserData.Where(user=>user.Index == index);
@@ -52,8 +60,8 @@ namespace FuzzyIdentService.Controllers
                     user = user,
                     fUser = fUser
                 });
-            var q = fUsers.OrderBy(fUser => fUser.fUser.FoneticMiddleName).Select(fUser=>fUser.fUser.FoneticMiddleName).Distinct();
-            await q.ForEachAsync(fUser =>pick.Add(fUser, fHandler.BestMatch(LastName, fUser)));
+            var query = fUsers.OrderBy(fUser => fUser.fUser.FoneticMiddleName).Select(fUser=>fUser.fUser.FoneticMiddleName).Distinct();
+            await query.ForEachAsync(fUser =>pick.Add(fUser, fHandler.BestMatch(LastName, fUser)));
             string[] matchesMiddleNames = pick.Where(element => element.Value < 3).ToDictionary(element => element.Key,element => element.Value).Keys.ToArray();
             fUsers = fUsers.Where(fUser => matchesMiddleNames.Contains(fUser.fUser.FoneticMiddleName));
             

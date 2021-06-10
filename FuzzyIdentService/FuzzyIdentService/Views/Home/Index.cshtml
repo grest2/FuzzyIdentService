@@ -3,14 +3,16 @@
     ViewBag.Title = "Пользователи";
 }
 
-<a asp-action="Create">Найти пользователя</a>
+<a asp-action="Find">Найти пользователя</a>
+
 <table class="table">
     <tr><td>Имя</td></tr>
     <tr><td>Индекс</td></tr>
 
     @foreach (var item in Model)
     {
-        <tr><td>@item.FirstName</td></tr>
+        <tr><td>@item.MiddleName</td></tr>
         <tr><td>@item.Index.</td></tr>
     }
 </table>
+<a asp-action="CreateUser">Добавить пользователя</a>
