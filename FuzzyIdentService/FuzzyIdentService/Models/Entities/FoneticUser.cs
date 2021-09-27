@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace FuzzyIdentService.Models.Entities
 {
-    public class FoneticUser
+    public class FoneticUser : BaseUser
     {
-        public string id { get; set; }
         public string FoneticFirstName { get; set; }
         public string FoneticMiddleName { get; set; }
         public string FoneticLastName { get; set; }
@@ -21,6 +20,8 @@ namespace FuzzyIdentService.Models.Entities
             this.FoneticMiddleName = FoneticMiddleName;
             this.FoneticLastName = FoneticLastName;
             this.UserId = UserId;
+            this.FirstName = FoneticFirstName;
+            this.MiddleName = FoneticMiddleName;
         }
     }
 }

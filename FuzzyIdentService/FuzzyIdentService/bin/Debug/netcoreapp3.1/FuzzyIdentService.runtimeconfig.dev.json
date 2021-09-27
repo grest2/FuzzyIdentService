@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\polya\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\polya\\.nuget\\packages"
-    ]
-  }
-}

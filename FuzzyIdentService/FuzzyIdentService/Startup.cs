@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using FuzzyIdentService.Utils.Dependency_Injection;
+using FuzzyIdentService.Models.Entities;
 
 namespace FuzzyIdentService
 {
@@ -21,6 +23,15 @@ namespace FuzzyIdentService
         }
 
         public IConfiguration Configuration { get; }
+
+        public void Configure(IWebHostBuilder builder)
+        {
+            builder.ConfigureServices((context,service) =>
+            {
+                service.AddSingleton<BaseRepository<BaseUser>>();
+            });
+        }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
