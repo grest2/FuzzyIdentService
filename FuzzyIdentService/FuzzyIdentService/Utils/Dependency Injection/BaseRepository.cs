@@ -24,6 +24,11 @@ namespace FuzzyIdentService.Utils.Dependency_Injection
             return model;
         }
 
+        public TDbModel GetSingle(string id)
+        {
+            return Context.Set<TDbModel>().FirstOrDefault(user => user.id == id);
+        }
+
         public void Delete(string id)
         {
             var toDelete = Context.Set<TDbModel>().FirstOrDefault(user => user.id == id);

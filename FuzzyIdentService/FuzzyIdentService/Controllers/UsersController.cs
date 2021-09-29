@@ -14,12 +14,12 @@ namespace FuzzyIdentService.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private User user { get; set; }
-        private FoneticUser f_user { get; set; }
         private IBaseRepository<FoneticUser> ContextUsers { get; set; }
+        private IBaseRepository<User> Users { get; set; }
         private Dictionary<string, int> pick = new Dictionary<string, int>();
         private FuzzyHandlerScope fHandler = new FuzzyHandlerScope();
         private int distance = 3;
+        private string ErrorReason = "";
 
         [HttpGet]
         public JsonResult GetUsers(string index)
@@ -58,6 +58,30 @@ namespace FuzzyIdentService.Controllers
             return new JsonResult(pick.Where(user => user.Value < distance)
                 .ToDictionary(element => element.Key,
                 element => element.Value));
+        }
+        [HttpPut]
+        public JsonResult UpdateUsers(User UserUpdated)
+        {
+            bool success = true;
+            
+            var user = Users.GetSingle(UserUpdated.id);
+            try
+            {
+                if (user != null)
+                {
+                    user = Users.Update(UserUpdated);
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorReason = ex.Message;
+            }
+
+            return success ? new JsonResult("Update was successfull") : new JsonResult($"Success is { success.ToString() } because {ErrorReason}");
         }
     }
 }
