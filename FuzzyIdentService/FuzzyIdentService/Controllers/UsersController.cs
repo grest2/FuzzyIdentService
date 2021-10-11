@@ -14,22 +14,22 @@ namespace FuzzyIdentService.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private User user { get; set; }
-        private FoneticUser f_user { get; set; }
         private IBaseRepository<FoneticUser> ContextUsers { get; set; }
         private Dictionary<string, int> pick = new Dictionary<string, int>();
         private FuzzyHandlerScope fHandler = new FuzzyHandlerScope();
         private int distance = 3;
+        private string ErrorReason = "";
 
         [HttpGet]
-        public JsonResult GetUsers(string index)
+        public async Task<JsonResult> GetUser(string index)
         {
-            return new JsonResult(ContextUsers.Get(index));
+            return new JsonResult(await ContextUsers.Get(index));
         }
+
         [HttpPost]
-        public JsonResult BestMatchLastName(string index, string lastName)
+        public async Task<JsonResult> BestMatchLastName(string index, string lastName)
         {
-            var users = ContextUsers.Get(index);
+            var users = await ContextUsers.Get(index);
             users.ForEach(user => pick.Add(user.FoneticLastName, fHandler
                 .BestMatch(lastName, user.FoneticLastName)));
 
@@ -38,9 +38,9 @@ namespace FuzzyIdentService.Controllers
                 element => element.Value));
         }
         [HttpPost]
-        public JsonResult BestMatchFirstName(string index, string firstname)
+        public async Task<JsonResult> BestMatchFirstName(string index, string firstname)
         {
-            var users = ContextUsers.Get(index);
+            var users = await ContextUsers.Get(index);
             users.ForEach(user => pick.Add(user.FoneticLastName, fHandler
                 .BestMatch(firstname, user.FoneticLastName)));
 
@@ -49,9 +49,9 @@ namespace FuzzyIdentService.Controllers
                 element => element.Value));
         }
         [HttpPost]
-        public JsonResult BestMatchMiddleName(string index, string middlename)
+        public async Task<JsonResult> BestMatchMiddleName(string index, string middlename)
         {
-            var users = ContextUsers.Get(index);
+            var users = await ContextUsers.Get(index);
             users.ForEach(user => pick.Add(user.FoneticLastName, fHandler
                 .BestMatch(middlename, user.FoneticLastName)));
 
@@ -59,5 +59,30 @@ namespace FuzzyIdentService.Controllers
                 .ToDictionary(element => element.Key,
                 element => element.Value));
         }
+        // [HttpPut]
+        /*public async Task<JsonResult> UpdateUsers(User userUpdated)
+        {
+            bool success = true;
+            
+            var user = await ContextUsers.GetSingle(userUpdated.id);
+            try
+            {
+                if (user != null)
+                {
+                    user = await ContextUsers.Update(userUpdated);
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorReason = ex.Message;
+            }
+
+            return success ? new JsonResult("Update was successful") :
+                new JsonResult($"Success is { false.ToString() } because { ErrorReason }");
+        }*/
     }
 }

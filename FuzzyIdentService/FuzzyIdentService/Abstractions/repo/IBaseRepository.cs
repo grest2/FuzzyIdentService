@@ -8,11 +8,12 @@ namespace FuzzyIdentService.Abstractions.repo
 {
     interface IBaseRepository<TDbModel> where TDbModel : BaseUser
     {
-        public List<TDbModel> GetAll();
-        public List<TDbModel> Get(string index);
-        public TDbModel Create(TDbModel model);
-        public TDbModel Update(TDbModel model);
-        public void Delete(String id);
+        public Task<List<TDbModel>> GetAll();
+        public Task<TDbModel> GetSingle(string id);
+        public Task<List<TDbModel>> Get(string index);
+        public Task<TDbModel> Update(TDbModel model);
+
+        public Task Delete(string id);
 
     }
 }

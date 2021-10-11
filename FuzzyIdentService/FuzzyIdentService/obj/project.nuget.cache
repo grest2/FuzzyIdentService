@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kwYETV082T8x7zz2z+oRNs4LpQcw6+RNzH9oyb18yaXvz67Nj5EEDVrALjTrmKOAuVc0o2IWyAFhYQoroTuI2A==",
+  "dgSpecHash": "u30I1BP78Ktbig8sWzWPCKI6BP6KiB1IyzkKvca5/e+W7avx+/qTSWU8QpQefVK0yySIHyFAKdzwkuWfRYBd2Q==",
   "success": true,
   "projectFilePath": "D:\\Github\\FuzzyIdentService\\FuzzyIdentService\\FuzzyIdentService\\FuzzyIdentService.csproj",
   "expectedPackageFiles": [
@@ -97,7 +97,9 @@
     "C:\\Users\\polya\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\polya\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\polya\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\polya\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\polya\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\polya\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\polya\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.18\\microsoft.netcore.app.host.win-x64.3.1.18.nupkg.sha512"
   ],
   "logs": []
 }

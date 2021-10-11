@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace FuzzyIdentService.Utils.Dependency_Injection
 {
@@ -17,40 +18,56 @@ namespace FuzzyIdentService.Utils.Dependency_Injection
             this.Context = context;
         }
 
-        public TDbModel Create(TDbModel model)
+        public async Task<TDbModel> Create(TDbModel model)
         {
-            Context.Set<TDbModel>().Add(model);
-            Context.SaveChanges();
+            await Context.Set<TDbModel>().AddAsync(model);
+            await Context.SaveChangesAsync();
             return model;
         }
 
-        public void Delete(string id)
+        public async Task<TDbModel> GetSingle(string id)
         {
-            var toDelete = Context.Set<TDbModel>().FirstOrDefault(user => user.id == id);
+            return await Context.Set<TDbModel>()
+                .FirstOrDefaultAsync(user => user.id == id);
+        }
+
+        public async Task Delete(string id)
+        {
+            var toDelete = await Context.Set<TDbModel>()
+                .FirstOrDefaultAsync(user => user.id == id);
             Context.Set<TDbModel>().Remove(toDelete);
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
         }
 
-        public List<TDbModel> Get(string index)
+        public async Task<List<TDbModel>> Get(string index)
         {
-            return Context.Set<TDbModel>().ToList().FindAll(user => user.Index == index);
+            return await Context.Set<TDbModel>()
+                .Where(model => model.id == index).ToListAsync();
         }
 
-        public List<TDbModel> GetAll()
+        public async Task<List<TDbModel>> GetAll()
         {
-            return Context.Set<TDbModel>().ToList();
+            return await Context.Set<TDbModel>()
+                .ToListAsync();
         }
 
-        public TDbModel Update(TDbModel model)
+        public async Task<TDbModel> Update(TDbModel model)
         {
-            var toUpdate = Context.Set<TDbModel>().FirstOrDefault(model => model.id == model.id);
+            var toUpdate = await Context.Set<TDbModel>()
+                .FirstOrDefaultAsync(user => user.id == model.id);
             if (toUpdate != null)
             {
                 toUpdate = model;
             }
-            Context.Update(toUpdate);
-            Context.SaveChanges();
-            return toUpdate;
+
+            if (toUpdate != null)
+            {
+                Context.Update(toUpdate);
+                await Context.SaveChangesAsync();
+                return toUpdate;
+            }
+
+            return null;
         }
     }
 }
