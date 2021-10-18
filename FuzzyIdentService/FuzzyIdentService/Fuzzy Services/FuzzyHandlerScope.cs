@@ -14,7 +14,10 @@ namespace FuzzyIdentService.Fuzzy_Services
         public int BestMatch(string FirstWord, string SecondWord)
         {
             string FoneticName = rusMetaphone.getRightName(FirstWord);
-            return dlMetric.DamerauLevensteinMetrics(FoneticName,SecondWord);
+
+            string FoneticNameSecond = rusMetaphone.getRightName(SecondWord);
+            
+            return dlMetric.DamerauLevensteinMetrics(FoneticName,FoneticNameSecond);
 
         }
     }

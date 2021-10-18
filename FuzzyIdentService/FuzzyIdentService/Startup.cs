@@ -24,7 +24,7 @@ namespace FuzzyIdentService
 
         public IConfiguration Configuration { get; }
 
-        public void Configure(IWebHostBuilder builder)
+        public void ConfigureDependcy(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context,service) =>
             {

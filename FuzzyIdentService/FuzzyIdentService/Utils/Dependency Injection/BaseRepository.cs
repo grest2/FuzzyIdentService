@@ -42,14 +42,18 @@ namespace FuzzyIdentService.Utils.Dependency_Injection
         public async Task<List<TDbModel>> Get(string index)
         {
             return await Context.Set<TDbModel>()
-                .Where(model => model.id == index).ToListAsync();
+                .Where(model => model.Index == index)
+                .ToListAsync();
         }
 
         public async Task<List<TDbModel>> GetAll()
         {
-            return await Context.Set<TDbModel>()
+            return await Context
+                .Set<TDbModel>()
                 .ToListAsync();
         }
+        
+        
 
         public async Task<TDbModel> Update(TDbModel model)
         {
