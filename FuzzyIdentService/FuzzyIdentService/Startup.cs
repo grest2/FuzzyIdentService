@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FuzzyIdentService.Abstractions;
+using FuzzyIdentService.Fuzzy_Services;
 using FuzzyIdentService.Models.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using FuzzyIdentService.Utils.Dependency_Injection;
 using FuzzyIdentService.Models.Entities;
+using FuzzyIdentService.Utils.Dependency_Injection.Services.UserService;
+using FuzzyIdentService.Utils.Dependency_Injection.Services.UsersManagingService;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using Microsoft.AspNetCore.Http;
 using React.AspNet;
@@ -28,7 +32,7 @@ namespace FuzzyIdentService
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureDependcy(IWebHostBuilder builder)
+        public void ConfigureDependency(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context,service) =>
             {
@@ -42,11 +46,14 @@ namespace FuzzyIdentService
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<UserContext>(options => options.UseSqlServer(connection));
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IFuzzyHandler, FuzzyHandlerScope>();
+            services.AddScoped<IUserManagingService, UserManagingService>();
             services.AddControllersWithViews();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddReact();
 
-// Make sure a JS engine is registered, or you will get an error!
+            // Make sure a JS engine is registered, or you will get an error!
             services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
                 .AddV8();
 
