@@ -26,8 +26,15 @@ using FuzzyIdentService.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\Views\_ViewImports.cshtml"
+using React.AspNet;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d6a5625cc8fb4476f348b0fe9041c550465d8bf9", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0086d40d3302234a25d85e187fb1a2ddb8d63d0e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0345b0dabec4045e99e4bdf48bfd5a60d3097c72", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     {
         #pragma warning disable 1998

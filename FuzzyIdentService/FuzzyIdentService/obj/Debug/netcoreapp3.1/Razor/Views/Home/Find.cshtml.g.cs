@@ -26,8 +26,15 @@ using FuzzyIdentService.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\Views\_ViewImports.cshtml"
+using React.AspNet;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e549f2e6d274fce8862fdc1a07f5c05be0c09b2c", @"/Views/Home/Find.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0086d40d3302234a25d85e187fb1a2ddb8d63d0e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0345b0dabec4045e99e4bdf48bfd5a60d3097c72", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Find : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<FuzzyIdentService.Models.Entities.User>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Home", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -67,7 +74,7 @@ using FuzzyIdentService.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e549f2e6d274fce8862fdc1a07f5c05be0c09b2c4398", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e549f2e6d274fce8862fdc1a07f5c05be0c09b2c4589", async() => {
                 WriteLiteral("\r\n    <p>\r\n        Введите индекс: <input type=\"text\" name=\"Index\">\r\n        Введите фамилию: <input type=\"text\" name=\"LastName\">\r\n        <input type=\"submit\" value=\"Найти\">\r\n    </p>\r\n");
             }
             );

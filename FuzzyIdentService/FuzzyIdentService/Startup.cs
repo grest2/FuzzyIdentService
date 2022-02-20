@@ -12,6 +12,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using FuzzyIdentService.Utils.Dependency_Injection;
 using FuzzyIdentService.Models.Entities;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using Microsoft.AspNetCore.Http;
+using React.AspNet;
+using JavaScriptEngineSwitcher.V8;
 
 namespace FuzzyIdentService
 {
@@ -39,6 +43,13 @@ namespace FuzzyIdentService
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<UserContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
+
+// Make sure a JS engine is registered, or you will get an error!
+            services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
+                .AddV8();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +72,11 @@ namespace FuzzyIdentService
 
             app.UseAuthorization();
 
+            app.UseReact(config =>
+            {
+
+            });
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

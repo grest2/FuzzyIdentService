@@ -1,9 +1,9 @@
-﻿@model IEnumerable<FuzzyIdentService.Models.Entities.UserFoneticUser>
+﻿@model IEnumerable<String>
 <table class="table">
     <tr><td>Возможно вы имели в виду:</td></tr>
 
     @foreach (var item in Model)
     {
-        <tr><td>@item.user.MiddleName</td></tr>
+        <tr><td>@item</td></tr>
     }
 </table>

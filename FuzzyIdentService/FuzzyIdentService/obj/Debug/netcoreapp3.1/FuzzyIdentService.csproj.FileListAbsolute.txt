@@ -95,3 +95,15 @@ D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcor
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\ChakraCore.dll
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\ChakraCore.dll
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.MvcApplicationPartsAssemblyInfo.cs
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\JavaScriptEngineSwitcher.V8.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\ClearScript.Core.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\ClearScript.V8.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\ru-ru\JavaScriptEngineSwitcher.V8.resources.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\Ajax.dll

@@ -18,7 +18,11 @@ namespace FuzzyIdentService.Fuzzy_Services
             string FoneticNameSecond = rusMetaphone.getRightName(SecondWord);
             
             return dlMetric.DamerauLevensteinMetrics(FoneticName,FoneticNameSecond);
+        }
 
+        public string GetFoneticKey(string name)
+        {
+            return rusMetaphone.getRightName(name);
         }
     }
 }

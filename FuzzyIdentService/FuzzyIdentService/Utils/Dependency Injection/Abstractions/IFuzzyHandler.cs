@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace FuzzyIdentService.Abstractions
 {
-    interface IFuzzyHandler
+    public interface IFuzzyHandler
     {
         public int BestMatch(string FirstWord,string SecondWord);
+        public string GetFoneticKey(string name);
     }
 }

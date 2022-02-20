@@ -39,7 +39,10 @@ namespace FuzzyIdentService.Fuzzy_Services
         {
             for (int index = 0; index < dictKeys.Length; index++)
             {
-                suffixDictionary.Add(dictKeys[index], dictValues[index]);
+                if (suffixDictionary.Count == 0)
+                {
+                    suffixDictionary.Add(dictKeys[index], dictValues[index]);
+                }
             }
         }
         public static RussianMetaphone getInstance()

@@ -8,6 +8,9 @@ using FuzzyIdentService.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using FuzzyIdentService.Fuzzy_Services;
 using System.Diagnostics;
+using FuzzyIdentService.Abstractions.repo;
+using FuzzyIdentService.Utils.Dependency_Injection;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FuzzyIdentService.Controllers
 {
@@ -17,10 +20,15 @@ namespace FuzzyIdentService.Controllers
         private FuzzyHandlerScope fHandler = new FuzzyHandlerScope();
         private Dictionary<string, int> pick = new Dictionary<string, int>();
         private int distance = 3;
+        
+        private IBaseRepository<FoneticUser> ContextUsersFonetic { get; set; }
+        private IBaseRepository<User> UserContext { get; set; }
 
         public HomeController(UserContext context)
         {
             db = context;
+            this.ContextUsersFonetic = new BaseRepository<FoneticUser>(context);
+            this.UserContext = new BaseRepository<User>(context);
         }
 
         public IActionResult Find()
@@ -55,30 +63,21 @@ namespace FuzzyIdentService.Controllers
 
         public async Task<IActionResult> FindMatch(string index,string LastName)
         {
-            IQueryable<User> users = db.UserData.Where(user=>user.Index == index);
+            var users = await UserContext.Get(index);
 
-            var fUsers = users.Join(db.FoneticUser,
-                user => user.id,
-                fUser => fUser.UserId,
-                (user, fUser) => new UserFoneticUser
-                {
-                    user = user,
-                    fUser = fUser
-                });
-            var query = fUsers.OrderBy(fUser => fUser.fUser.FoneticMiddleName)
-                .Select(fUser=>fUser.fUser.FoneticMiddleName)
+            var unicUsers = users.OrderBy(user => user.MiddleName)
+                .Select(user => user.MiddleName)
                 .Distinct();
-
-            await query.ForEachAsync(fUser =>pick.Add(fUser, fHandler.BestMatch(LastName, fUser)));
-           
-            string[] matchesMiddleNames = pick.Where(element => element.Value < distance)
-                .ToDictionary(element => element.Key,element => element.Value)
-                .Keys
-                .ToArray();
-
-            fUsers = fUsers.Where(fUser => matchesMiddleNames.Contains(fUser.fUser.FoneticMiddleName));
             
-            return View(await fUsers.ToListAsync());
+            foreach (var lastNameUser in unicUsers)
+            {
+                pick.Add(lastNameUser,fHandler.BestMatch(LastName,lastNameUser));
+            }
+
+            IEnumerable<String> result = pick.Where(user => user.Value < distance)
+                .ToDictionary(element => element.Key,
+                    element => element.Value).Keys.ToArray();
+            return View( result );
         }
 
         
