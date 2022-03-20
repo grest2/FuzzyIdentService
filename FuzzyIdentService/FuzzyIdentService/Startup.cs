@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using FuzzyIdentService.Utils.Dependency_Injection;
 using FuzzyIdentService.Models.Entities;
+using FuzzyIdentService.Utils.Dependency_Injection.Services;
 using FuzzyIdentService.Utils.Dependency_Injection.Services.UserService;
 using FuzzyIdentService.Utils.Dependency_Injection.Services.UsersManagingService;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
@@ -49,6 +50,7 @@ namespace FuzzyIdentService
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IFuzzyHandler, FuzzyHandlerScope>();
             services.AddScoped<IUserManagingService, UserManagingService>();
+            services.AddScoped<IImportService, ImportService>();
             services.AddControllersWithViews();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddReact();
@@ -78,11 +80,6 @@ namespace FuzzyIdentService
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseReact(config =>
-            {
-
-            });
             
             app.UseEndpoints(endpoints =>
             {
