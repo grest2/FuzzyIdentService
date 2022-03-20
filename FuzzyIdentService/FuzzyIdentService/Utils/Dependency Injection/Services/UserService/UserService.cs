@@ -16,7 +16,6 @@ namespace FuzzyIdentService.Utils.Dependency_Injection.Services.UserService
 {
     public class UserService: IUserService
     {
-        private readonly IBaseRepository<User> _repo;
         private readonly UserContext _ctx;
         private readonly IFuzzyHandler _fuzzyHandler;
         
@@ -24,7 +23,6 @@ namespace FuzzyIdentService.Utils.Dependency_Injection.Services.UserService
 
         public UserService(UserContext ctx, IFuzzyHandler handler)
         {
-            _repo = new BaseRepository<User>(ctx);
             _ctx = ctx;
             _fuzzyHandler = handler;
         }

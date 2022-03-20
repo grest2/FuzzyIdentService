@@ -22,13 +22,13 @@ namespace FuzzyIdentService.Controllers
         private int distance = 3;
         
         private IBaseRepository<FoneticUser> ContextUsersFonetic { get; set; }
-        private IBaseRepository<User> UserContext { get; set; }
+        private IBaseRepository<BaseUser> UserContext { get; set; }
 
         public HomeController(UserContext context)
         {
             db = context;
             this.ContextUsersFonetic = new BaseRepository<FoneticUser>(context);
-            this.UserContext = new BaseRepository<User>(context);
+            this.UserContext = new BaseRepository<BaseUser>(context);
         }
 
         public IActionResult Find()
@@ -37,28 +37,12 @@ namespace FuzzyIdentService.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await db.UserData.ToListAsync());
+            //return View(await db.UserData.ToListAsync());
+            return View();
         }
         public IActionResult CreateUser()
         {
             return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(string ID,string FirstName,string MiddleName,string LastName,string Index)
-        {
-            User user = new User(ID, FirstName, MiddleName, LastName, Index);
-            FoneticUser foneticUser = new FoneticUser(ID,
-                RussianMetaphone.getInstance()
-                .getRightName(user.FirstName),
-                RussianMetaphone.getInstance()
-                .getRightName(user.MiddleName),
-                RussianMetaphone.getInstance()
-                .getRightName(user.LastName),
-                ID);
-            db.UserData.Add(user);
-            db.FoneticUser.Add(foneticUser);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> FindMatch(string index,string LastName)

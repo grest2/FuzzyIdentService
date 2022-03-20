@@ -29,16 +29,5 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var user in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => user.Index)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => user.MiddleName)
-            </td>
-        </tr>
-    }
 </table>
 <a asp-action="CreateUser">Добавить пользователя</a>
