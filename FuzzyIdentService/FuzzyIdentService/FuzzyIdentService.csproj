@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Ajax" Version="0.0.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
     <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore" Version="3.12.6" />
     <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.linux-x64" Version="3.12.6" />
     <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64" Version="3.12.6" />

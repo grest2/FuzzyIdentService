@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "od9px9uj2FS5jlJzGZ3ogdnvhex0ScHvfDlhXT33hY9hClOTmUCzvrwOLUwGI2JvyKzmoMATD6nsnqIV0GHZ1A==",
+  "dgSpecHash": "2HQzLYftPZXAwN/lTSbiCvjGPZ7a6dPNlsivNFZYve5uCRDdHWUmA0QBL7EGWgGE98QiXjExeEKwZHVTfypRQg==",
   "success": true,
   "projectFilePath": "D:\\Github\\FuzzyIdentService\\FuzzyIdentService\\FuzzyIdentService\\FuzzyIdentService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\polya\\.nuget\\packages\\advancedstringbuilder\\0.1.0\\advancedstringbuilder.0.1.0.nupkg.sha512",
     "C:\\Users\\polya\\.nuget\\packages\\ajax\\0.0.0\\ajax.0.0.0.nupkg.sha512",
+    "C:\\Users\\polya\\.nuget\\packages\\autofac\\6.0.0\\autofac.6.0.0.nupkg.sha512",
+    "C:\\Users\\polya\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.2.0\\autofac.extensions.dependencyinjection.7.2.0.nupkg.sha512",
     "C:\\Users\\polya\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\polya\\.nuget\\packages\\javascriptengineswitcher.chakracore\\3.12.6\\javascriptengineswitcher.chakracore.3.12.6.nupkg.sha512",
     "C:\\Users\\polya\\.nuget\\packages\\javascriptengineswitcher.chakracore.native.linux-x64\\3.12.6\\javascriptengineswitcher.chakracore.native.linux-x64.3.12.6.nupkg.sha512",

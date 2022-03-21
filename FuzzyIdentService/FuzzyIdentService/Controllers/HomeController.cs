@@ -10,25 +10,17 @@ using FuzzyIdentService.Fuzzy_Services;
 using System.Diagnostics;
 using FuzzyIdentService.Abstractions.repo;
 using FuzzyIdentService.Utils.Dependency_Injection;
+using FuzzyIdentService.Utils.Dependency_Injection.Services.UserService;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FuzzyIdentService.Controllers
 {
     public class HomeController : Controller
     {
-        private UserContext db;
-        private FuzzyHandlerScope fHandler = new FuzzyHandlerScope();
-        private Dictionary<string, int> pick = new Dictionary<string, int>();
-        private int distance = 3;
-        
-        private IBaseRepository<FoneticUser> ContextUsersFonetic { get; set; }
-        private IBaseRepository<BaseUser> UserContext { get; set; }
-
-        public HomeController(UserContext context)
+        private readonly IUserService _service;
+        public HomeController(IUserService service)
         {
-            db = context;
-            this.ContextUsersFonetic = new BaseRepository<FoneticUser>(context);
-            this.UserContext = new BaseRepository<BaseUser>(context);
+            _service = service;
         }
 
         public IActionResult Find()
@@ -45,25 +37,10 @@ namespace FuzzyIdentService.Controllers
             return View();
         }
 
-        public async Task<IActionResult> FindMatch(string index,string LastName)
+        public async Task<IActionResult> FindMatch(string index,string lastName)
         {
-            var users = await UserContext.Get(index);
-
-            var unicUsers = users.OrderBy(user => user.MiddleName)
-                .Select(user => user.MiddleName)
-                .Distinct();
-            
-            foreach (var lastNameUser in unicUsers)
-            {
-                pick.Add(lastNameUser,fHandler.BestMatch(LastName,lastNameUser));
-            }
-
-            IEnumerable<String> result = pick.Where(user => user.Value < distance)
-                .ToDictionary(element => element.Key,
-                    element => element.Value).Keys.ToArray();
-            return View( result );
+            var users = await _service.BestLastNames(index, lastName, 0, 10);
+            return View( users );
         }
-
-        
     }
 }

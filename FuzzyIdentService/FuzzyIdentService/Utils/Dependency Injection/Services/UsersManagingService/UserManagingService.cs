@@ -23,7 +23,7 @@ namespace FuzzyIdentService.Utils.Dependency_Injection.Services.UsersManagingSer
 
         public async Task<Row<User>> GetAllUsers(long count, long offset)
         {
-            return await _ctx.UserData.ToRowAsync(offset, count);
+            return await _ctx.UserData.ToRowAsync(count, offset);
         }
 
         public async Task<User> AddUser(User user)

@@ -1,8 +1,8 @@
-﻿@model IEnumerable<String>
+﻿@model Row<string>
 <table class="table">
     <tr><td>Возможно вы имели в виду:</td></tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.List)
     {
         <tr><td>@item</td></tr>
     }

@@ -1,9 +1,11 @@
 ﻿
 using System.Threading.Tasks;
+using FuzzyIdentService.Models.Context;
 using FuzzyIdentService.Models.Entities;
 using FuzzyIdentService.Utils.Dependency_Injection.Services.UserService;
 using FuzzyIdentService.Utils.Dependency_Injection.Services.UsersManagingService;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FuzzyIdentService.Controllers
 {
@@ -19,11 +21,12 @@ namespace FuzzyIdentService.Controllers
             _managing = managing;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("get-all")]
         public async Task<JsonResult> GetAll(long count , long offset)
         {
-            return new JsonResult(await _managing.GetAllUsers(count, offset));
+            var result = await _managing.GetAllUsers(count, offset);
+            return new JsonResult(result);
         }
 
         [HttpPost]

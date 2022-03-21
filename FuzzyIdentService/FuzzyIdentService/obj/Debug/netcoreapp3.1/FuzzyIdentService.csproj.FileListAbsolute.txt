@@ -109,3 +109,5 @@ D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcor
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\obj\Debug\netcoreapp3.1\FuzzyIdentService.genruntimeconfig.cache
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\Humanizer.dll
 D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\Autofac.dll
+D:\Github\FuzzyIdentService\FuzzyIdentService\FuzzyIdentService\bin\Debug\netcoreapp3.1\Autofac.Extensions.DependencyInjection.dll

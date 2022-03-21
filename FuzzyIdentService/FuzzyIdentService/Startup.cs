@@ -47,14 +47,17 @@ namespace FuzzyIdentService
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<UserContext>(options => options.UseSqlServer(connection));
+            
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IFuzzyHandler, FuzzyHandlerScope>();
             services.AddScoped<IUserManagingService, UserManagingService>();
             services.AddScoped<IImportService, ImportService>();
-            services.AddControllersWithViews();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
+            
+            
             services.AddReact();
-
+            services.AddControllers();
             // Make sure a JS engine is registered, or you will get an error!
             services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
                 .AddV8();
@@ -64,6 +67,7 @@ namespace FuzzyIdentService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -83,9 +87,12 @@ namespace FuzzyIdentService
             
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
+                /*
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                    */
             });
         }
     }
