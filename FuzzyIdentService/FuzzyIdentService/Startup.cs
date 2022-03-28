@@ -53,9 +53,9 @@ namespace FuzzyIdentService
             services.AddScoped<IUserManagingService, UserManagingService>();
             services.AddScoped<IImportService, ImportService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            
-            
-            
+
+
+            services.AddMvc();
             services.AddReact();
             services.AddControllers();
             // Make sure a JS engine is registered, or you will get an error!
@@ -87,12 +87,9 @@ namespace FuzzyIdentService
             
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
-                /*
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                    */
             });
         }
     }

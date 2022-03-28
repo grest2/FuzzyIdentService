@@ -30,9 +30,9 @@ namespace FuzzyIdentService.Controllers
         {
             return View();
         }
+        [Route("{count}/{offset}")]
         public async Task<IActionResult> Index(long count, long offset)
         {
-            //return View(await db.UserData.ToListAsync());
             return View(await _managing.GetAllUsers(count, offset));
         }
         public IActionResult CreateUser()
