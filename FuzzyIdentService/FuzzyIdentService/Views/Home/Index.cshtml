@@ -1,19 +1,20 @@
-﻿@model IEnumerable<FuzzyIdentService.Models.Entities.User>
+﻿@model Row<FuzzyIdentService.Models.Entities.User>
+
 @{ 
     ViewBag.Title = "Пользователи";
 }
 
 
 
-@*<table class="table">
+<table class="table">
     <tr><td>Имя</td></tr>
     <tr><td>Индекс</td></tr>
-    @foreach (var item in Model)
+    @foreach (var item in Model.List)
     {
         <tr><td>@item.MiddleName</td></tr>
         <tr><td>@item.Index.</td></tr>
     }
-</table>*@
+</table>
 
 <a asp-action="Find">Найти пользователя</a>
 <table class="table table-striped">

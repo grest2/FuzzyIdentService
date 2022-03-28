@@ -7,3 +7,13 @@
         <tr><td>@item</td></tr>
     }
 </table>
+<div>
+    <ul class="pagination">
+        @for (var i = 1; i <= Model.Total / 10; i++)
+        {
+            <li class="page-item @(i == Model.Count ? "active" : "")">
+                <a asp-page="/pagination" asp-route-currentpage="@i" class="page-link">@i</a>
+            </li>
+        }
+    </ul>
+</div>

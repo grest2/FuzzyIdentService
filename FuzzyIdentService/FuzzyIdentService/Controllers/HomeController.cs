@@ -11,6 +11,7 @@ using System.Diagnostics;
 using FuzzyIdentService.Abstractions.repo;
 using FuzzyIdentService.Utils.Dependency_Injection;
 using FuzzyIdentService.Utils.Dependency_Injection.Services.UserService;
+using FuzzyIdentService.Utils.Dependency_Injection.Services.UsersManagingService;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FuzzyIdentService.Controllers
@@ -18,19 +19,21 @@ namespace FuzzyIdentService.Controllers
     public class HomeController : Controller
     {
         private readonly IUserService _service;
-        public HomeController(IUserService service)
+        private readonly IUserManagingService _managing;
+        public HomeController(IUserService service, IUserManagingService managing)
         {
             _service = service;
+            _managing = managing;
         }
 
         public IActionResult Find()
         {
             return View();
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(long count, long offset)
         {
             //return View(await db.UserData.ToListAsync());
-            return View();
+            return View(await _managing.GetAllUsers(count, offset));
         }
         public IActionResult CreateUser()
         {
